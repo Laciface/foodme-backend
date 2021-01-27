@@ -20,7 +20,10 @@ use App\Http\Controllers\AuthController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::get('/category', [\App\Http\Controllers\CategoryController::class, 'showCategories']);
+Route::get('/category', [\App\Http\Controllers\APIController::class, 'showCategories']);
+Route::get('/foodDetails/{id}', [\App\Http\Controllers\APIController::class, 'getDetails']);
+Route::get('/meals/{category}', [\App\Http\Controllers\APIController::class, 'showMeals']);
+Route::get('/search/{word}', [\App\Http\Controllers\APIController::class, 'search']);
 
 
 Route::group(['middeleware'=>['auth:sanctum']], function(){
