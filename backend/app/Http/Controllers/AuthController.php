@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    //    $validator = Validator::make($request->all(), [
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
         'name' => 'required',
