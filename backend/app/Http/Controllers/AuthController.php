@@ -24,11 +24,11 @@ class AuthController extends Controller
     $user->email = $request->email;
     $user->password = bcrypt($request->password);
     $user->save();
-
-    return response()->json([
-        'status_code'=> 200,
-        'message'=> 'User create successfully'
-    ]);
+    return redirect('http://127.0.0.1:3000');
+//    return response()->json([
+//        'status_code'=> 200,
+//        'message'=> 'User create successfully'
+//    ]);
 }
     public function login(Request $request)
     {
@@ -51,10 +51,10 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
         $tokenResult = $user->createToken('authToken')->plainTextToken;
-        return response()->json([
+        return redirect('http://127.0.0.1:3000');
+           /*return response()->json([
             'status_code' => 200,
-            'token' => $tokenResult
-        ]);
+            'token' => $tokenResult]);*/
     }
 
     public function logout(Request $request){
@@ -63,5 +63,9 @@ class AuthController extends Controller
             'status_code'=> 200,
             'message'=> 'Token deleted successfully'
         ]);
+    }
+
+    public function getUser(Request $request){
+        $user = User::where('name', $request->email)->first();
     }
 }
