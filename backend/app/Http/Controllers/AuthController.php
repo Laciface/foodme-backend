@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,25 +11,29 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function register(Request $request){
-        $validator = Validator::make($request->all(), [
-        'name' => 'required',
-        'email' => 'required|email',
-        'password'=> 'required'
-    ]);
+        try{
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|min:4',
+                'email' => 'required|email',
+                'password'=> 'required|min:5'
+            ]);
 
-    if($validator->fails()){
-        return response()->json(['status_code'=> 400, 'message'=> 'Bad request']);
+            if($validator->fails()){
+                return response([ 'message'=> 'Some input are invalid'], 400);
+            }
+            User::create([
+                'name'=> $request->name,
+                'email'=> $request->email,
+                'password'=>bcrypt($request->password)
+            ]);
+
+            return response()->json(['message'=> 'Registration was successfully'], 200);
+
+        } catch(\Exeption $error){
+            Log::error($error->getMessage());
+            return response([ 'message'=> 'Something went wrong'], 400);
         }
-    $user = new User();
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->password = bcrypt($request->password);
-    $user->save();
-    return redirect('http://127.0.0.1:3000');
-//    return response()->json([
-//        'status_code'=> 200,
-//        'message'=> 'User create successfully'
-//    ]);
+
 }
     public function login(Request $request)
     {
