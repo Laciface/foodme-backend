@@ -49,28 +49,26 @@ class AuthController extends Controller
 
         if(!Auth::attempt($credential)){
             return response()->json([
-                'status_code'=> 500,
                 'message'=> 'Unauthorized'
-            ]);
+            ], 500);
         }
 
         $user = User::where('email', $request->email)->first();
         $tokenResult = $user->createToken('authToken')->plainTextToken;
-        return redirect('http://127.0.0.1:3000');
-           /*return response()->json([
-            'status_code' => 200,
-            'token' => $tokenResult]);*/
-    }
-
-    public function logout(Request $request){
-        $request->user()->currentAccessToken()->delete();
         return response()->json([
-            'status_code'=> 200,
-            'message'=> 'Token deleted successfully'
-        ]);
+            'token' => $tokenResult,
+            'name'=>$user->name], 200);
     }
 
-    public function getUser(Request $request){
-        $user = User::where('name', $request->email)->first();
-    }
+//    public function logout(Request $request){
+//        $request->user()->currentAccessToken()->delete();
+//        return response()->json([
+//            'status_code'=> 200,
+//            'message'=> 'Token deleted successfully'
+//        ]);
+//    }
+
+//    public function getUser(Request $request){
+//        $user = User::where('name', $request->email)->first();
+//    }
 }
