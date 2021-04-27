@@ -18,6 +18,9 @@ class CreateFoodListsTable extends Migration
             $table->unsignedBigInteger('id_user_from');
             $table->foreign('id_user_from')->references('id')->on('users');
             $table->integer('food_id');
+            $table->unique(['id_user_from', 'food_id']);
+            $table->string('food_name');
+            $table->string('food_photo');
 
         });
     }

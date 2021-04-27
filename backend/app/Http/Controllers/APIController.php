@@ -24,7 +24,6 @@ class APIController extends Controller
             Log::error($e->getMessage());
             return response()->json(['message'=>'Something went wrong'], 400);
         }
-
     }
 
     public function getDetails($id){
@@ -40,7 +39,6 @@ class APIController extends Controller
             Log::error($e->getMessage());
             return response()->json(['message'=>'Something went wrong'], 400);
         }
-
     }
 
     public function showMeals($category){
@@ -56,7 +54,6 @@ class APIController extends Controller
             Log::error($e->getMessage());
             return response()->json(['message'=>'Something went wrong'], 400);
         }
-
     }
 
 
