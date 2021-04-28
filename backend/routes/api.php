@@ -31,6 +31,7 @@ Route::get('/search/{word}', [\App\Http\Controllers\APIController::class, 'searc
 
 Route::middleware('auth:sanctum')->post('/favorite', [\App\Http\Controllers\FoodController::class, 'addFav']);
 Route::middleware('auth:sanctum')->get('/favorite/list', [\App\Http\Controllers\FoodController::class, 'showFav']);
+Route::middleware('auth:sanctum')->post('/favorite/delete', [\App\Http\Controllers\FoodController::class, 'deleteFavorite']);
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
