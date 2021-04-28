@@ -41,4 +41,10 @@ class FoodController extends Controller
             return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
+    public function deleteFavorite(Request $request){
+        $user_id = auth()->user()->id;
+        $food_id = $request->food_id;
+        FoodList::where('food_id', $food_id)->where('id_user_from', $user_id)->delete();
+        return response()->json(['message' => 'OK'], 200);
+    }
 }
