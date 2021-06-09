@@ -13,7 +13,7 @@ class FoodList extends Model
 
     public $timestamps = false;
 
-    protected $fillable =[
+    protected $fillable = [
         'id_user_from',
         'food_id'
     ];

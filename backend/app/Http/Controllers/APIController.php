@@ -14,10 +14,10 @@ class APIController extends Controller
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $result = curl_exec($curl);
             curl_close($curl);
-            return response()->json(json_decode($result),200);
+            return response()->json(json_decode($result), 200);
         } catch(\Exception $e){
             Log::error($e->getMessage());
-            return response()->json(['message'=>'Something went wrong'], 400);
+            return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
 
@@ -32,7 +32,7 @@ class APIController extends Controller
             return response()->json(json_decode($result),200);
         } catch(\Exception $e){
             Log::error($e->getMessage());
-            return response()->json(['message'=>'Something went wrong'], 400);
+            return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
 
@@ -44,10 +44,10 @@ class APIController extends Controller
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $result = curl_exec($curl);
             curl_close($curl);
-            return response()->json(json_decode($result),200);
+            return response()->json(json_decode($result), 200);
         } catch(\Exception $e){
             Log::error($e->getMessage());
-            return response()->json(['message'=>'Something went wrong'], 400);
+            return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
 
@@ -59,10 +59,10 @@ class APIController extends Controller
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $result = curl_exec($curl);
             curl_close($curl);
-            return response()->json(json_decode($result),200);
+            return response()->json(json_decode($result), 200);
         } catch(\Exception $e){
             Log::error($e->getMessage());
-            return response()->json(['message'=>'Something went wrong'], 400);
+            return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
 }
