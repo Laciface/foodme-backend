@@ -2,15 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use http\Exception\InvalidArgumentException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Ramsey\Uuid\Exception\NameException;
-use function PHPUnit\Framework\throwException;
 
 class APIController extends Controller
 {
-
     public function showCategories(){
         try {
             $curl = curl_init();
@@ -19,10 +14,11 @@ class APIController extends Controller
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $result = curl_exec($curl);
             curl_close($curl);
-            return response()->json(json_decode($result),200);
+            return response()->json(json_decode($result), 200);
         } catch(\Exception $e){
             Log::error($e->getMessage());
-            return response()->json(['message'=>'Something went wrong'], 400);
+
+            return response()->json(['message'=>'Something went wrong'], 500);
         }
     }
 
@@ -37,7 +33,7 @@ class APIController extends Controller
             return response()->json(json_decode($result),200);
         } catch(\Exception $e){
             Log::error($e->getMessage());
-            return response()->json(['message'=>'Something went wrong'], 400);
+            return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
 
@@ -49,14 +45,12 @@ class APIController extends Controller
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $result = curl_exec($curl);
             curl_close($curl);
-            return response()->json(json_decode($result),200);
+            return response()->json(json_decode($result), 200);
         } catch(\Exception $e){
             Log::error($e->getMessage());
-            return response()->json(['message'=>'Something went wrong'], 400);
+            return response()->json(['message' => 'Something went wrong'], 400);
         }
     }
-
-
 
     public function search($word){
         try {
@@ -66,11 +60,10 @@ class APIController extends Controller
             curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
             $result = curl_exec($curl);
             curl_close($curl);
-            return response()->json(json_decode($result),200);
+            return response()->json(json_decode($result), 200);
         } catch(\Exception $e){
             Log::error($e->getMessage());
-            return response()->json(['message'=>'Something went wrong'], 400);
+            return response()->json(['message' => 'Something went wrong'], 400);
         }
-
     }
 }

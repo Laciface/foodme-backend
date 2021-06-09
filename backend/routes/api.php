@@ -33,6 +33,8 @@ Route::middleware('auth:sanctum')->post('/favorite', [\App\Http\Controllers\Food
 Route::middleware('auth:sanctum')->get('/favorite/list', [\App\Http\Controllers\FoodController::class, 'showFav']);
 Route::middleware('auth:sanctum')->post('/favorite/delete', [\App\Http\Controllers\FoodController::class, 'deleteFavorite']);
 
+Route::middleware('auth:sanctum')->post('/edit/profile', [\App\Http\Controllers\AuthController::class, 'editProfile']);
+Route::get('/profileData/{id}', [AuthController::class, 'getProfileData']);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
