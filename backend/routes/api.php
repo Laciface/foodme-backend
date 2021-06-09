@@ -22,6 +22,9 @@ Route::group(['middeleware' => ['auth:sanctum']], function(){
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 
+Route::middleware('auth:sanctum')->post('/edit/profile', [\App\Http\Controllers\AuthController::class, 'editProfile']);
+Route::get('/profileData/{id}', [AuthController::class, 'getProfileData']);
+
 Route::get('/category', [\App\Http\Controllers\APIController::class, 'showCategories']);
 Route::get('/foodDetails/{id}', [\App\Http\Controllers\APIController::class, 'getDetails']);
 Route::get('/meals/{category}', [\App\Http\Controllers\APIController::class, 'showMeals']);
