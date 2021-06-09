@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use http\Exception\InvalidArgumentException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use Ramsey\Uuid\Exception\NameException;
-use function PHPUnit\Framework\throwException;
 
 class APIController extends Controller
 {

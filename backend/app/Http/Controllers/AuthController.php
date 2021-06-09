@@ -58,16 +58,4 @@ class AuthController extends Controller
             'token' => $tokenResult,
             'name'=>$user->name], 200);
     }
-
-//    public function logout(Request $request){
-//        $request->user()->currentAccessToken()->delete();
-//        return response()->json([
-//            'status_code'=> 200,
-//            'message'=> 'Token deleted successfully'
-//        ]);
-//    }
-
-//    public function getUser(Request $request){
-//        $user = User::where('name', $request->email)->first();
-//    }
 }
