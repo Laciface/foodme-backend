@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Categories extends Model
 {
@@ -25,7 +26,6 @@ class Categories extends Model
      *
      * @var array
      */
-
 
     /**
      * The attributes that should be cast to native types.

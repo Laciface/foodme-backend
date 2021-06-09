@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\FoodList;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Http\Controllers\APIController;
 
 class FoodController extends Controller
 {
