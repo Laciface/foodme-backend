@@ -17,9 +17,4 @@ class FoodList extends Model
         'id_user_from',
         'food_id'
     ];
-
-    public function find(){
-
-    }
-
 }

@@ -29,11 +29,11 @@ class AuthController extends Controller
                 'password'=>bcrypt($request->password)
             ]);
 
-            return response()->json(['message'=> 'Registration was successfully'], 200);
+            return response()->json(['message' => 'Registration was successfully'], 200);
 
         } catch(\Exeption $error){
             Log::error($error->getMessage());
-            return response([ 'message'=> 'Something went wrong'], 400);
+            return response([ 'message' => 'Something went wrong'], 400);
         }
 }
     public function login(Request $request)
@@ -43,14 +43,14 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         if($validator->fails()){
-            return response()->json(['status_code'=> 400, 'message'=> 'Bad request']);
+            return response()->json(['status_code' => 400, 'message' => 'Bad request']);
         }
 
         $credential = request(['email', 'password']);
 
         if(!Auth::attempt($credential)){
             return response()->json([
-                'message'=> 'Unauthorized'
+                'message' => 'Unauthorized'
             ], 500);
         }
 
@@ -58,8 +58,8 @@ class AuthController extends Controller
         $tokenResult = $user->createToken('authToken')->plainTextToken;
         return response()->json([
             'token' => $tokenResult,
-            'name'=>$user->name,
-            'user_id' =>$user->id], 200);
+            'name' => $user->name,
+            'user_id' => $user->id], 200);
     }
     public function editProfile(Request $request){
         $user_id = auth()->user()->id;

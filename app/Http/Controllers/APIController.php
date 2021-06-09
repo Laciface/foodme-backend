@@ -18,7 +18,7 @@ class APIController extends Controller
         } catch(\Exception $e){
             Log::error($e->getMessage());
 
-            return response()->json(['message'=>'Something went wrong'], 500);
+            return response()->json(['message' => 'Something went wrong'], 500);
         }
     }
 

@@ -19,8 +19,4 @@ class Profile extends Model
         'country',
         'introduction'
     ];
-
-    public function find(){
-
-    }
 }
