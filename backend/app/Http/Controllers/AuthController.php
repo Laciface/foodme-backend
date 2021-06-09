@@ -25,18 +25,17 @@ class AuthController extends Controller
                 return response([ 'message'=> 'Some input are invalid'], 400);
             }
             User::create([
-                'name'=> $request->name,
-                'email'=> $request->email,
-                'password'=>bcrypt($request->password)
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password)
             ]);
 
-            return response()->json(['message'=> 'Registration was successfully'], 200);
+            return response()->json(['message' => 'Registration was successfully'], 200);
 
         } catch(\Exeption $error){
             Log::error($error->getMessage());
-            return response([ 'message'=> 'Something went wrong'], 400);
+            return response([ 'message' => 'Something went wrong'], 400);
         }
-
 }
     public function login(Request $request)
     {
@@ -45,14 +44,14 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
         if($validator->fails()){
-            return response()->json(['status_code'=> 400, 'message'=> 'Bad request']);
+            return response()->json(['status_code' => 400, 'message' => 'Bad request']);
         }
 
         $credential = request(['email', 'password']);
 
         if(!Auth::attempt($credential)){
             return response()->json([
-                'message'=> 'Unauthorized'
+                'message' => 'Unauthorized'
             ], 500);
         }
 
@@ -124,5 +123,4 @@ class AuthController extends Controller
         $userInfo = User::where('id', $id)->get();
         return response()->json($userInfo, 200);
     }
-
 }
