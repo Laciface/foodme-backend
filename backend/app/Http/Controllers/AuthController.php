@@ -33,7 +33,6 @@ class AuthController extends Controller
             Log::error($error->getMessage());
             return response([ 'message'=> 'Something went wrong'], 400);
         }
-
 }
     public function login(Request $request)
     {

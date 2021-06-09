@@ -19,7 +19,5 @@ class FoodList extends Model
     ];
 
     public function find(){
-
     }
-
 }

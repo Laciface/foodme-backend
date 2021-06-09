@@ -10,7 +10,6 @@ use function PHPUnit\Framework\throwException;
 
 class APIController extends Controller
 {
-
     public function showCategories(){
         try {
             $curl = curl_init();
@@ -56,8 +55,6 @@ class APIController extends Controller
         }
     }
 
-
-
     public function search($word){
         try {
             $curl = curl_init();
@@ -71,6 +68,5 @@ class APIController extends Controller
             Log::error($e->getMessage());
             return response()->json(['message'=>'Something went wrong'], 400);
         }
-
     }
 }
